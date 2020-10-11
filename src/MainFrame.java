@@ -71,7 +71,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	Icon previousIcon = new ImageIcon(MainFrame.class.getResource("previousIcon.png"));
 	
 
-	private JPanel panelSuadoThi = new PanelSuaDoThi();
+	private JPanel credits = new Credits();
 	private JPanel panelDuyetRong = new JPanel();
 	public panelBFS panelSoDoBFS = new panelBFS(this);
 	public panelDFS panelSoDoDFS = new panelDFS(this);
@@ -129,7 +129,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		makeDescr();
 		JLabel lbMakeNode = new JLabel("Click left mouse to make a point");
 		lbMakeNode.setBounds(25,60,200,20);
-		panelSuadoThi.add(lbMakeNode);
+		credits.add(lbMakeNode);
 
 	}
 
@@ -151,10 +151,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		Container c = getContentPane();
 		desc.setBounds(510, 3, WIDTH, HEIGHT);
 		desc.setLayout(card);
-		desc.add(panelSuadoThi, "edit");
-		panelSuadoThi.setBorder(BorderFactory.createTitledBorder("Edit graph"));
-		panelSuadoThi.setLayout(null);
-		panelSuadoThi.add(qc);
+		desc.add(credits, "edit");
+		credits.setBorder(BorderFactory.createTitledBorder("Edit graph"));
+		credits.setLayout(null);
+		credits.add(qc);
 		panelDuyetRong.setBorder(BorderFactory
 				.createTitledBorder("BFS"));
 		JPanel tuDong = new JPanel();

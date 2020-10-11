@@ -135,7 +135,7 @@ public class workPanel extends JPanel{
 				}
 				if(e.getSource()==changeNum){
 					try{
-						TS=JOptionPane.showInputDialog("Enter Weight of the edge",ts);
+						TS=JOptionPane.showInputDialog("Enter Wei",ts);
 						if(Integer.parseInt(TS)<100)ts=Integer.parseInt(TS);
 						if(ts==0) ts=1;
 					}catch(Exception eee){};
@@ -152,7 +152,7 @@ public class workPanel extends JPanel{
 					updateTable();
 				}
 				
-				repaint(); 
+				repaint();//repaint la ve lai, chu y khi thay doi cai j do ta nen dung repaint :v
 			}
 		};
 		thisroot.addActionListener(action);
