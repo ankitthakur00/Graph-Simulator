@@ -24,7 +24,7 @@ public class panelBFS extends JPanel implements ActionListener {
 
 	Timer timer;
 	long beforeTime = 0L;
-	kichBan buoc;
+	play steps;
 
 	private SoDo sodo;
 
@@ -82,22 +82,19 @@ public class panelBFS extends JPanel implements ActionListener {
 	private void update2() {
 		if (kBan.start != null) {
 
-			// System.out.println(buoc.buoc);
-			if (buoc.next != null)
-				buoc = buoc.next;
+			if (steps.next != null)
+				steps =steps.next;
 			else
-				buoc = kBan.start;
+				steps = kBan.start;
 
 		}
 	}
 	private void update3() {
 		if (kBan.start != null) {
-
-			// System.out.println(buoc.buoc);
-			if (buoc.pre != null)
-				buoc = buoc.pre;
+			if (steps.pre != null)
+				steps = steps.pre;
 			else
-				buoc = kBan.start;
+				steps = kBan.start;
 
 		}
 	}
@@ -105,11 +102,11 @@ public class panelBFS extends JPanel implements ActionListener {
 		if (kBan.start != null) {
 			if (System.currentTimeMillis() - beforeTime > speed) {
 				beforeTime = System.currentTimeMillis();
-				//System.out.println(buoc.buoc);
-				if (buoc.next != null)
-					buoc = buoc.next;
+			
+				if (steps.next != null)
+					steps = steps.next;
 				else
-					buoc = kBan.start;
+					steps = kBan.start;
 			}
 		}
 	}
@@ -196,50 +193,48 @@ public class panelBFS extends JPanel implements ActionListener {
 				dbg2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 				sodo.showSoDo(dbg2, n, xuatphat);
 				
-				if (buoc != null) {
+				if (steps != null) {
 					
-						if(buoc!=null) mf.result.prosessingTime.setTienDo(buoc);
+						if(steps!=null) mf.result.prosessingTime.setTienDo(steps);
 						
 						if(!mf.result.prosessingTime.press&&mf.result.prosessingTime.release){
 							mf.result.prosessingTime.release=false;
 							mf.result.prosessingTime.press = false;
 						}
 							
-						
-					sodo.showState(dbg2, buoc.f, buoc.r,buoc.i,buoc.j);
+					sodo.showState(dbg2, steps.f, steps.r,steps.i,steps.j);	
 					
-					if (buoc.buoc == "begin")
+					if (steps.buoc == "begin")
 						sodo.showStart(dbg2, Color.red);
-
-					if (buoc.buoc == "Khoi tao")
+					if (steps.buoc == "Khoi tao")
 						sodo.khoitao(dbg2, Color.red, 165, 60, n, xuatphat);
-					if (buoc.buoc == "B1")
+					if (steps.buoc == "B1")
 						sodo.B1(dbg2, Color.red, 155, 130);
-					if (buoc.buoc == "fKhacrFirst")
+					if (steps.buoc == "fKhacrFirst")
 						sodo.fKhacRFirst(dbg2, Color.red, 170, 180);
-					if (buoc.buoc == "fKhacrSecond")
+					if (steps.buoc == "fKhacrSecond")
 						sodo.fKhacRSecond(dbg2, Color.red, 170, 180);
 
-					if (buoc.buoc == "jNhoHonNFirst")
+					if (steps.buoc == "jNhoHonNFirst")
 						sodo.jBeHonNFirst(dbg2, Color.red, 170, 320);
-					if (buoc.buoc == "jNhoHonNSecond")
+					if (steps.buoc == "jNhoHonNSecond")
 						sodo.jBeHonNSecond(dbg2, Color.red, 170, 320);
 
-					if (buoc.buoc == "plusJFirst")
+					if (steps.buoc == "plusJFirst")
 						sodo.plusJFirst(dbg2, Color.red, 170, 320);
-					if (buoc.buoc == "plusJSecond")
+					if (steps.buoc == "plusJSecond")
 						sodo.plusJSecond(dbg2, Color.red, 170, 320);
 
-					if (buoc.buoc == "B3")
+					if (steps.buoc == "B3")
 						sodo.B3(dbg2, Color.red, 300, 405);
-					if (buoc.buoc == "daTham")
+					if (steps.buoc == "daTham")
 						sodo.daTham(dbg2, Color.red, 165, 390);
-					if (buoc.buoc == "B2")
+					if (steps.buoc == "B2")
 						sodo.B2(dbg2, Color.red, 170, 250);
-					if (buoc.buoc == "end")
+					if (steps.buoc == "end")
 						sodo.theEnd(dbg2, Color.red);
-					if (buoc.buoc == "buff2") {
-						buoc = kBan.start;
+					if (steps.buoc == "buff2") {
+						steps = kBan.start;
 						mf.start.setIcon(mf.startIcon);
 						run = false;
 					}
@@ -252,25 +247,18 @@ public class panelBFS extends JPanel implements ActionListener {
 	}
 
 	public void setState() {
-		
-		/*System.out.println("Edge["+buoc.buoc+"]:\n");
-		buoc.edgeL.out();
-		System.out.println("**********************");
-		*/
-		
-			mf.queue.setText(buoc.buoc);
+			
+			mf.queue.setText(steps.buoc);
 
 			
 
-			int[] queue = buoc.queue;
+			int[] queue = steps.queue;
 			String textOutQueue = "";
-			for (int i = 0; i < buoc.r; i++)
+			for (int i = 0; i <steps.r; i++)
 				textOutQueue += " " + queue[i];
 			mf.queue.setText(textOutQueue);
 			
 			
-
-			// ***************DO Thi***************
 			Image dbImage = mf.wp.createImage(mf.width, mf.heigh);
 			Graphics2D g2=null;
 			if(dbImage!=null){
@@ -284,46 +272,39 @@ public class panelBFS extends JPanel implements ActionListener {
 					mf.wp.gp.drawHideGraph(g2, mf.wp.ds);
 					//Node******
 					
-					mf.wp.gp.drawEdgeListSapDuyet(g2, kBan.edgeL,buoc.nEdge,mf.wp.ds);
+					mf.wp.gp.drawEdgeListSapDuyet(g2, kBan.edgeL,steps.nEdge,mf.wp.ds);
 					
 					
 					
-					for(int i=0;i<buoc.r;i++){
+					for(int i=0;i<steps.r;i++){
 						mf.wp.drawN.nodeSapDuyet(g2, mf.wp.ds.get_Node(queue[i]-1).x,
 								mf.wp.ds.get_Node(queue[i]-1).y, queue[i]-1);
 					}
-					mf.wp.gp.drawEdgeList(g2, kBan.edgeL, buoc.soDinhDaDuyet-1, mf.wp.ds);
+					mf.wp.gp.drawEdgeList(g2, kBan.edgeL,steps.soDinhDaDuyet-1, mf.wp.ds);
 					
-					mf.result.setResult(buoc.kqDuyet);
+					mf.result.setResult(steps.kqDuyet);
 					
-					if (mf.wp.ds.get_xy(buoc.nodeDangXet - 1) != null
-							&& buoc.nodeDangXet != 0&&g2!=null) {
-						
-						
+					if (mf.wp.ds.get_xy(steps.nodeDangXet - 1) != null
+							&& steps.nodeDangXet != 0&&g2!=null) {
 						
 						mf.wp.drawN.nodeStart(g2, mf.wp.ds
-								.get_Node(buoc.nodeDangXet - 1),true);
+								.get_Node(steps.nodeDangXet - 1),true);
 						
-						
-						if(buoc.nodeKeDangXet!=0){
+						if(steps.nodeKeDangXet!=0){
 							
-							if(buoc.nodeDangXet==buoc.nodeKeDangXet)
-							mf.wp.drawN.nodeKeDangXet(g2, mf.wp.ds.get_Node(buoc.nodeKeDangXet-1), false,true);
+							if(steps.nodeDangXet==steps.nodeKeDangXet)
+							mf.wp.drawN.nodeKeDangXet(g2, mf.wp.ds.get_Node(steps.nodeKeDangXet-1), false,true);
 							else 
-								mf.wp.drawN.nodeKeDangXet(g2, mf.wp.ds.get_Node(buoc.nodeKeDangXet-1), false,false);
+								mf.wp.drawN.nodeKeDangXet(g2, mf.wp.ds.get_Node(steps.nodeKeDangXet-1), false,false);
 						}
 						
-						
-						// lay ngu canh do hoa, va dung lai cac ham de ve lai dbgImage de ve
-						// lai do thi
 					}
-					if(!buoc.kqDuyet.equals("")&&buoc.nodeDangXet-1!=mf.wp.ds.FirstNode.cost
-							&&buoc.nodeKeDangXet-1!=mf.wp.ds.FirstNode.cost)
+					if(!steps.kqDuyet.equals("")&&steps.nodeDangXet-1!=mf.wp.ds.FirstNode.cost
+							&&steps.nodeKeDangXet-1!=mf.wp.ds.FirstNode.cost)
 						mf.wp.drawN.nodeRoot(g2, mf.wp.ds.FirstNode, false);
-					//************************
 					
-					
-					if(run==false&&buoc==null) mf.wp.gp.drawResultBFS(g2, mf.wp.ds);
+		
+					if(run==false&& steps==null) mf.wp.gp.drawResultBFS(g2, mf.wp.ds);
 					
 					mf.wp.BFSChuThich.showCT(g2);
 					
@@ -337,11 +318,7 @@ public class panelBFS extends JPanel implements ActionListener {
 			
 		}
 		
-
-		// ***********************************
-
 		
-
 	}
 
 	private void paintSr() {

@@ -36,7 +36,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 	public void setNumStep(kichBanBFS a){
 		int step = 0;
 		this.a = a;
-		kichBan buoc = a.start;
+		play buoc = a.start;
 		while(buoc!=null){
 			step++;
 			buoc=buoc.next;
@@ -49,7 +49,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 	public void setNumStep(KichBanDFS b){
 		int step = 0;
 		this.b = b;
-		kichBan2 buoc = b.start;
+		play2 buoc = b.start;
 		while(buoc!=null){
 			step++;
 			buoc=buoc.next;
@@ -78,7 +78,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 	public void setNumStep(kichBanDJ c){
 		int step = 0;
 		this.c = c;
-		kichBan3 buoc = c.start;
+		play3 buoc = c.start;
 		while(buoc!=null){
 			step++;
 			buoc=buoc.next;
@@ -106,12 +106,12 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 	public void setStepForKB(int step){
 		if(n==1){
 			int i=0;
-			mf.panelSoDoBFS.buoc=a.start;
-			if(step == 0) mf.panelSoDoBFS.buoc=a.start;
-			else if(step == nStep) mf.panelSoDoBFS.buoc= mf.panelSoDoBFS.kBan.end;
+			mf.panelSoDoBFS.steps=a.start;
+			if(step == 0) mf.panelSoDoBFS.steps=a.start;
+			else if(step == nStep) mf.panelSoDoBFS.steps= mf.panelSoDoBFS.kBan.end;
 			else
 			while(i<step) {
-				mf.panelSoDoBFS.buoc=mf.panelSoDoBFS.buoc.next;
+				mf.panelSoDoBFS.steps=mf.panelSoDoBFS.steps.next;
 				i++;
 			}
 		}else if(n==2){
@@ -137,12 +137,12 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		}
 	}
 		
-	public void setTienDo(kichBan buoc){
+	public void setTienDo(play buoc){
 		if(buoc==mf.panelSoDoBFS.kBan.start) x = 0;
 		else if (buoc == mf.panelSoDoBFS.kBan.end) x = w;
 		else {
 			x=0;
-			kichBan p = mf.panelSoDoBFS.kBan.start;
+			play p = mf.panelSoDoBFS.kBan.start;
 			while(p!=buoc&&p!=null) {
 				x+=doan;
 				p=p.next;
@@ -150,12 +150,13 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		}
 		paintScr();
 	}
-	public void setTienDo(kichBan2 buoc){
+	
+	public void setTienDo(play2 buoc){
 		if(buoc==mf.panelSoDoDFS.kBan.start) x = 0;
 		else if (buoc == mf.panelSoDoDFS.kBan.end) x = w;
 		else {
 			x=0;
-			kichBan2 p = mf.panelSoDoDFS.kBan.start;
+			play2 p = mf.panelSoDoDFS.kBan.start;
 			while(p!=buoc&&p!=null) {
 				x+=doan;
 				p=p.next;
@@ -163,12 +164,12 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		}
 		paintScr();
 	}
-	public void setTienDo(kichBan3 buoc){
+	public void setTienDo(play3 buoc){
 		if(buoc==mf.panelDijstra.kBan.start) x = 0;
 		else if (buoc == mf.panelDijstra.kBan.end) x = w;
 		else {
 			x=0;
-			kichBan3 p = mf.panelDijstra.kBan.start;
+			play3 p = mf.panelDijstra.kBan.start;
 			while(p!=buoc&&p!=null) {
 				x+=doan;
 				p=p.next;

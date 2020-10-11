@@ -25,7 +25,7 @@ public class panelDFS extends JPanel implements ActionListener{
 
 	boolean run = false;
 	public KichBanDFS kBan;
-	kichBan2 buoc;
+	play2 buoc;
 
 	Timer timer;
 	long beforeTime = 0L;
@@ -319,7 +319,7 @@ public class panelDFS extends JPanel implements ActionListener{
 				mf.wp.gp.drawHideGraph(g2, mf.wp.ds);
 				//Node******
 				
-				mf.ketQuaDuyet.setText(buoc.ketQuaDuyet);
+				mf.browseResult.setText(buoc.ketQuaDuyet);
 				mf.result.setResult(buoc.ketQuaDuyet);
 				
 				if(buoc.nEdge>0) {

@@ -48,18 +48,18 @@ class kqDuyet {
 	}
 }
 
-public class kichBan3 {
+public class play3 {
 	String text;
 	int r, c;
 	int edgeN = 0;
-	kichBan3 next;
-	kichBan3 prev;
+	play3 next;
+	play3 prev;
 	kqDuyet kq;
 	int n;
 
 	String kqDuyet;
 
-	public kichBan3(String text, int r, int c, int edgeN, kqDuyet kq, int nkq) {
+	public play3(String text, int r, int c, int edgeN, kqDuyet kq, int nkq) {
 		this.text = text;
 		this.r = r;
 		this.c = c;

@@ -1,9 +1,9 @@
 
 
 public class KichBanDFS {
-	kichBan2 start;
+	play2 start;
 
-	kichBan2 end;
+	play2 end;
 
 	Edge_List edgeL;
 
@@ -17,7 +17,7 @@ public class KichBanDFS {
 	}
 
 	public void insertKichBan(String buoc,int []Stack,int l,int nodeDangXet,int nodeKeDangXet,String ketQuaDuyet, int nEdge) {
-		kichBan2 a = new kichBan2(buoc,Stack,l,nodeDangXet,nodeKeDangXet,ketQuaDuyet,nEdge);
+		play2 a = new play2(buoc,Stack,l,nodeDangXet,nodeKeDangXet,ketQuaDuyet,nEdge);
 		if (start == null) {
 			start = end = a;
 		} else {

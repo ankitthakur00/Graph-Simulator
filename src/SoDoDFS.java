@@ -236,8 +236,8 @@ public class SoDoDFS {
 		g2.drawString("j=" + j, 10, 65);
 	}
 	
-	public void stack(kichBan2 buoc,Graphics2D g2){
-		
+	public void stack(play2 buoc,Graphics2D g2){
+	
 		
 	
 		

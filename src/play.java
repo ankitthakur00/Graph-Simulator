@@ -1,4 +1,4 @@
-public class kichBan{
+public class play{
 	
 	String buoc;
 	int r,f;
@@ -14,10 +14,10 @@ public class kichBan{
 	
 	int i,j;
 	
-	kichBan next;
-	kichBan pre;
+	play next;
+	play pre;
 	
-	public kichBan(String buoc, int f, int r, int[] queue,int nodeDangXet, int nodeKeDangXet, int nEdge,int i,int j, String kqDuyet, int soDinhDaDuyet){
+	public play(String buoc, int f, int r, int[] queue,int nodeDangXet, int nodeKeDangXet, int nEdge,int i,int j, String kqDuyet, int soDinhDaDuyet){
 		this.buoc=buoc;
 		this.r=r;
 		this.f=f;

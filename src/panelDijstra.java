@@ -9,11 +9,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
-/**
- * 
- * @author Thach Shichibukai
- *
- */
+
 public class panelDijstra extends JPanel implements ActionListener,
 		MouseMotionListener {
 
@@ -29,7 +25,7 @@ public class panelDijstra extends JPanel implements ActionListener,
 	Image dbImage;
 
 	kichBanDJ kBan;
-	kichBan3 buoc;
+	play3 buoc;
 	TapDinh tapDinh;
 	private int[][] a = new int[31][31];
 

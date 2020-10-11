@@ -1,7 +1,7 @@
 
 
 public class kichBanBFS {
-	kichBan start,end;
+	play start,end;
 	
 	Edge_List edgeL;
 	
@@ -13,7 +13,7 @@ public class kichBanBFS {
 		this.edgeL=edgeL;
 	}
 	public void insertKichBan(String buoc, int f, int r, int [] queue,int nodeDangXet,int nodeKeDangXet, int nEdge,int i,int j,String kqDuyet, int soDinhDaDuyet){
-		kichBan a = new kichBan(buoc,f,r,queue,nodeDangXet, nodeKeDangXet, nEdge,i,j, kqDuyet, soDinhDaDuyet);
+		play a = new play(buoc,f,r,queue,nodeDangXet, nodeKeDangXet, nEdge,i,j, kqDuyet, soDinhDaDuyet);
 		if(start==null){
 			start=end=a;
 		}else{

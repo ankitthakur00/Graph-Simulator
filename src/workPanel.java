@@ -79,6 +79,7 @@ public class workPanel extends JPanel{
 	public KhungChuThich DFSChuThich;
 	public KhungChuThich Dijkstra;
 	
+	
 	public boolean edit=true;
 	public boolean BFS = false;
 	public boolean DFS = false;

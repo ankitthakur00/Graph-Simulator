@@ -80,19 +80,16 @@ public class MainFrame extends JFrame implements ActionListener {
 	public JPanel panelDuyetSau = new JPanel();
 	public JPanel panelDij = new JPanel();
 
-
 	JTextField queue = new JTextField();
 	public JButton start;
-
+	
 	// //////// panel DFS/////////////
-	JLabel ketQuaDuyet = new JLabel();
+	JLabel browseResult = new JLabel();
 	public JButton start2;
 
 	public JButton start3;
 	JButton New, Edit, BFS, DFS, DIJStra;
 	JCheckBox autoNumber, hideNumber;
-
-	
 	
 	public MainFrame() {
 
@@ -157,32 +154,26 @@ public class MainFrame extends JFrame implements ActionListener {
 		credits.add(qc);
 		panelDuyetRong.setBorder(BorderFactory
 				.createTitledBorder("BFS"));
-		JPanel tuDong = new JPanel();
-		tuDong.setBounds(5, 520, 300, 80);
-		tuDong.setLayout(null);
-		tuDong.setBorder(BorderFactory.createTitledBorder("Auto"));
-		panelDuyetRong.add(tuDong);
+		JPanel automatic = new JPanel();
+		automatic.setBounds(5, 520, 300, 80);
+		automatic.setLayout(null);
+		automatic.setBorder(BorderFactory.createTitledBorder("Auto"));
+		panelDuyetRong.add(automatic);
 
 		start = new JButton(startIcon);
 		
 		start.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
 
-		
-
+	//start bfs
 		start.addActionListener(new ActionListener() {
-			// STARTBFS
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				if(!panelSoDoBFS.run){
 					if(wp.ds.FirstNode!=null){
-						if(panelSoDoBFS.buoc==null) {
-							
-							
-							panelSoDoBFS.buoc=panelSoDoBFS.kBan.start;
-						}else if(panelSoDoBFS.buoc.buoc=="buff2")
-							panelSoDoBFS.buoc=panelSoDoBFS.kBan.start;
-							
+						if(panelSoDoBFS.steps==null) {	
+							panelSoDoBFS.steps=panelSoDoBFS.kBan.start;
+						}else if(panelSoDoBFS.steps.buoc=="buff2")
+							panelSoDoBFS.steps=panelSoDoBFS.kBan.start;
 						panelSoDoBFS.run = true;
 						start.setIcon(pauseIcon);
 					}
@@ -195,7 +186,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 
 		});
-		tuDong.add(start);
+		automatic.add(start);
 		JButton tamDung = new JButton(stopIcon);
 		tamDung.setBounds(xStopBt, yStopBt, wStopBt, hStopBt);
 		tamDung.addActionListener(new ActionListener() {
@@ -203,20 +194,20 @@ public class MainFrame extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				panelSoDoBFS.buoc=null;
+				panelSoDoBFS.steps=null;
 				panelSoDoBFS.run = false;
 				start.setIcon(startIcon);
-				panelSoDoBFS.buoc=panelSoDoBFS.kBan.start;
+				panelSoDoBFS.steps=panelSoDoBFS.kBan.start;
 				panelSoDoBFS.setState();
 				panelSoDoBFS.render();
 				
 			}
 
 		});
-		tuDong.add(tamDung);
+		automatic.add(tamDung);
 		JLabel lbSpeed = new JLabel("Speed");
 		lbSpeed.setBounds(20, 50, 100, 20);
-		tuDong.add(lbSpeed);
+		automatic.add(lbSpeed);
 
 		JPanel bangTay = new JPanel();
 		bangTay.setBounds(305, 520, 155, 50);
@@ -230,10 +221,10 @@ public class MainFrame extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (panelSoDoBFS.buoc == null && wp.ds.FirstNode != null) {
+				if (panelSoDoBFS.steps == null && wp.ds.FirstNode != null) {
 					panelSoDoBFS.makeKichBanBFS(wp.ds.FirstNode.cost + 1,
 							wp.data);
-					panelSoDoBFS.buoc = panelSoDoBFS.kBan.start;
+					panelSoDoBFS.steps = panelSoDoBFS.kBan.start;
 				}
 				panelSoDoBFS.actionPerformd();
 			}
@@ -272,7 +263,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		volumeSpeed speed1 = new volumeSpeed(panelSoDoBFS, panelSoDoDFS,
 				panelDijstra, 1);
 		speed1.setBounds(70, 50, 220, 20);
-		tuDong.add(speed1);
+		automatic.add(speed1);
 
 		// ********************DUYET CHIEU SAU**************************
 		desc.add(panelDuyetSau, "dfs");
@@ -403,8 +394,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		lbOutput.setBounds(10, 605, 100, 20);
 		panelDuyetSau.add(lbOutput);
 
-		ketQuaDuyet.setBounds(60, 605, 300, 20);
-		panelDuyetSau.add(ketQuaDuyet);
+		browseResult.setBounds(60, 605, 300, 20);
+		panelDuyetSau.add(browseResult);
 
 		// ************************DIJksTRA****************************
 
@@ -609,7 +600,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelDijstra.setRun(false);
 			panelSoDoBFS.timer.stop();
 			panelSoDoDFS.timer.stop();
-			panelSoDoBFS.buoc = null;
+			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			panelDijstra.kBan = new kichBanDJ();
@@ -642,7 +633,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelSoDoBFS.timer.stop();
 			panelSoDoDFS.timer.stop();
 			card.show(desc, "edit");
-			panelSoDoBFS.buoc = null;
+			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			panelDijstra.kBan = new kichBanDJ();
@@ -650,7 +641,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == this.BFS) {
 			
-			panelSoDoBFS.buoc = null;
+			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			
@@ -697,7 +688,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} 
 		if (e.getSource() == this.DFS) {
 			
-			panelSoDoBFS.buoc = null;
+			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			

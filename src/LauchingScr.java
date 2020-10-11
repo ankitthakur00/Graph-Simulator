@@ -8,6 +8,8 @@ import java.net.URL;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+
 public class LauchingScr extends JFrame{
 	
 	class ContentPanel extends JPanel {
@@ -25,7 +27,7 @@ public class LauchingScr extends JFrame{
 	}
 	
 	public LauchingScr(){
-		super("Graph Algorithms Simulator");
+		super("Graph Simulator");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		final LauchingScr a = this;
