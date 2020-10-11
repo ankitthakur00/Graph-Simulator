@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class panelSoDoBFS extends JPanel implements ActionListener {
+public class panelBFS extends JPanel implements ActionListener {
 
 	private int w = 455;
 	private int h = 500;
@@ -42,7 +42,7 @@ public class panelSoDoBFS extends JPanel implements ActionListener {
 		this.speed = speed;
 	}
 
-	public panelSoDoBFS(MainFrame mf) {
+	public panelBFS(MainFrame mf) {
 
 		timer = new Timer(100, this);
 		sodo = new SoDo();
@@ -240,7 +240,7 @@ public class panelSoDoBFS extends JPanel implements ActionListener {
 						sodo.theEnd(dbg2, Color.red);
 					if (buoc.buoc == "buff2") {
 						buoc = kBan.start;
-						mf.batdau.setIcon(mf.startIcon);
+						mf.start.setIcon(mf.startIcon);
 						run = false;
 					}
 					

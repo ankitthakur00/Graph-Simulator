@@ -21,7 +21,6 @@ import javax.swing.JPopupMenu;
 
 public class workPanel extends JPanel{
 	
-	//*************popup menu*******************
 	JPopupMenu Change_node=new JPopupMenu("Change_node");
 	JMenuItem thisroot=new JMenuItem("Change to root node",
 			new ImageIcon(MainFrame.class.getResource("root_syb.png")));
@@ -52,14 +51,14 @@ public class workPanel extends JPanel{
 	
 	private doubleNode edge;
 	public boolean showNumb=true;
-	//***************DATA***************************
+
 	public Node_Link ds = new Node_Link();
 	Edge_List listEdge=new Edge_List();
 	
 	public int data = 0;
 	
 	public MatNum matNum;
-	//*****************SU KIEN CHUOT**********************
+	//MouseEvents
 	private Point startDrag,endDrag,start;
 	
 	public int button=-1;
@@ -68,12 +67,13 @@ public class workPanel extends JPanel{
 	Node nodeMove=null;
 	
 	private int begin=0,end=0;
-	//*********************THANH PHAN VE*******************
+	
+	//Composition
 	public BackGround bg = new BackGround();
 	public Graphs gp = new Graphs();
 	
 	
-	//*********************Chu thich tren do thi**********************
+
 	
 	public KhungChuThich BFSChuThich;
 	public KhungChuThich DFSChuThich;
@@ -88,7 +88,6 @@ public class workPanel extends JPanel{
 	public workPanel(final MainFrame mf) {
 		matNum = new MatNum();
 		this.mf=mf;
-	
 		
 		BFSChuThich =new KhungChuThich(20,330);
 		BFSChuThich.addItem(Color.decode("#508006"), "Root node passed");
@@ -136,7 +135,7 @@ public class workPanel extends JPanel{
 				}
 				if(e.getSource()==changeNum){
 					try{
-						TS=JOptionPane.showInputDialog("Import number",ts);
+						TS=JOptionPane.showInputDialog("Enter Weight of the edge",ts);
 						if(Integer.parseInt(TS)<100)ts=Integer.parseInt(TS);
 						if(ts==0) ts=1;
 					}catch(Exception eee){};
@@ -153,7 +152,7 @@ public class workPanel extends JPanel{
 					updateTable();
 				}
 				
-				repaint();//repaint la ve lai, chu y khi thay doi cai j do ta nen dung repaint :v
+				repaint(); 
 			}
 		};
 		thisroot.addActionListener(action);

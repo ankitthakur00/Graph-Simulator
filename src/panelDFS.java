@@ -10,12 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-/**
- * 
- * @author Thach Shichibukai
- *
- */
-public class panelSoDoDFS extends JPanel implements ActionListener{
+public class panelDFS extends JPanel implements ActionListener{
 	public int w = 455;
 	public int h = 500;
 	MainFrame mf;
@@ -52,7 +47,7 @@ public class panelSoDoDFS extends JPanel implements ActionListener{
 		this.speed = speed;
 	}
 
-	public panelSoDoDFS(MainFrame mf) {
+	public panelDFS(MainFrame mf) {
 
 		timer = new Timer(100, this);
 		
@@ -252,7 +247,7 @@ public class panelSoDoDFS extends JPanel implements ActionListener{
 					if (buoc.buoc == "buff2") {
 						buoc = kBan.start;
 						run = false;
-						mf.batdau2.setIcon(mf.startIcon);
+						mf.start2.setIcon(mf.startIcon);
 					}
 					setState();
 				}

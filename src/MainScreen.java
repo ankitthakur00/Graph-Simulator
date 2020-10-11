@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class panelQuanCao extends JPanel implements ActionListener{
+@SuppressWarnings("serial")
+public class MainScreen extends JPanel implements ActionListener{
 	private int width = 400;
 	private int height = 25;
 	
@@ -28,7 +29,7 @@ public class panelQuanCao extends JPanel implements ActionListener{
 	String GVHD = "drag with right mouse to change node position";
 	String showStr = qc;
 	
-	public panelQuanCao(int x,int y){
+	public MainScreen(int x,int y){
 		this.setBounds(x,y,width,height);
 		
 		tm = new Timer(20, this);

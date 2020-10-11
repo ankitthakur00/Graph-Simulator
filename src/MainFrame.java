@@ -17,11 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- * 
- * @author Thach Shichibukai
- * 
- */
 public class MainFrame extends JFrame implements ActionListener {
 
 	private static final int WIDTH = 1000;
@@ -30,17 +25,11 @@ public class MainFrame extends JFrame implements ActionListener {
 	public static final int width = 501;
 	public static final int heigh = 411;
 
-	public resultSearch result;
-
-	/////////////////////////////
-	
+	public resultSearch result;	
 	int xBFS;
 	int xDFS;
 	boolean press=false;
-	///////////////////////////
-	
-	
-	
+
 	public static int xStartBt = 70;
 	public static int yStartBt = 20;
 	public static int wStartBt = 50;
@@ -61,7 +50,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public static int wPreBt = 50;
 	public static int hPreBt = 20;
 	
-	panelQuanCao qc = new panelQuanCao(15, 20);
+	MainScreen qc = new MainScreen(15, 20);
 	workPanel wp = new workPanel(this);
 	JPanel ctrTable = new JPanel();
 	JPanel MatricTable;
@@ -70,11 +59,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	JButton edit = new JButton("Sửa đô thị");
 	
-	// //////////////////////////
+	
 	private int loccard = 1;
 	CardLayout card = new CardLayout();
 	JPanel desc = new JPanel();
-	// //////cac panel mo phong//////////////
+	//style Panels
 	ImageIcon startIcon = new ImageIcon(MainFrame.class.getResource("startIcon.png"));
 	Icon pauseIcon = new ImageIcon(MainFrame.class.getResource("pauseIcon.png"));
 	Icon stopIcon = new ImageIcon(MainFrame.class.getResource("stopIcon.png"));
@@ -84,28 +73,23 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private JPanel panelSuadoThi = new PanelSuaDoThi();
 	private JPanel panelDuyetRong = new JPanel();
-	public panelSoDoBFS panelSoDoBFS = new panelSoDoBFS(this);
-	public panelSoDoDFS panelSoDoDFS = new panelSoDoDFS(this);
+	public panelBFS panelSoDoBFS = new panelBFS(this);
+	public panelDFS panelSoDoDFS = new panelDFS(this);
 	public panelDijstra panelDijstra = new panelDijstra(this);
 
 	public JPanel panelDuyetSau = new JPanel();
 	public JPanel panelDij = new JPanel();
 
-	// ////// Panel BFS //////////////////////
 
 	JTextField queue = new JTextField();
-	public JButton batdau;
+	public JButton start;
 
 	// //////// panel DFS/////////////
 	JLabel ketQuaDuyet = new JLabel();
-	public JButton batdau2;
-	
-	/////////////panel Djstra
-	public JButton batdau3;
-	// ///////////////////////////
-	// MENU
+	public JButton start2;
+
+	public JButton start3;
 	JButton New, Edit, BFS, DFS, DIJStra;
-	// statute
 	JCheckBox autoNumber, hideNumber;
 
 	
@@ -114,52 +98,38 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		
 		
-		super("Algorithms simulator");
+		super("Graph Algorithms simulator");
 		setLayout(null);
-	
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		URL iconURL = getClass().getResource("endd.png");
-		// iconURL is null when not found
 		ImageIcon icon = new ImageIcon(iconURL);
 		setIconImage(icon.getImage());
-		
 		JMenuBar mb = new JMenuBar();
 		this.setJMenuBar(mb);
-
 		New = new JButton("Create new");
 		
 		New.addActionListener(this);
 		Edit = new JButton("Edit");
 		Edit.addActionListener(this);
-		BFS = new JButton("BFS Algorithm");
+		BFS = new JButton("Breadth first Search");
 		BFS.addActionListener(this);
-		DFS = new JButton("DFS Algorithm");
+		DFS = new JButton("Depth First Search");
 		DFS.addActionListener(this);
-		DIJStra = new JButton("Dijkstra Algorithm");
+		DIJStra = new JButton("Dijkstra");
 		DIJStra.addActionListener(this);
-		
 		mb.add(New);
 		mb.add(Edit);
 		mb.add(BFS);
 		mb.add(DFS);
 		mb.add(DIJStra);
-
-		
-
 		wp.setBounds(5, 5, width, heigh);
 		add(wp);
-
 		makeCtrlTable();
-
 		makeMatricTable();
-
 		makeDescr();
-		
 		JLabel lbMakeNode = new JLabel("Click left mouse to make a point");
 		lbMakeNode.setBounds(25,60,200,20);
 		panelSuadoThi.add(lbMakeNode);
-	
 
 	}
 
@@ -178,46 +148,33 @@ public class MainFrame extends JFrame implements ActionListener {
 	private void makeDescr() {
 		int WIDTH = 465, HEIGHT = 647;
 
-		
-		
-		
 		Container c = getContentPane();
-
 		desc.setBounds(510, 3, WIDTH, HEIGHT);
-
 		desc.setLayout(card);
-
 		desc.add(panelSuadoThi, "edit");
 		panelSuadoThi.setBorder(BorderFactory.createTitledBorder("Edit graph"));
 		panelSuadoThi.setLayout(null);
 		panelSuadoThi.add(qc);
-
 		panelDuyetRong.setBorder(BorderFactory
 				.createTitledBorder("BFS"));
-
 		JPanel tuDong = new JPanel();
 		tuDong.setBounds(5, 520, 300, 80);
 		tuDong.setLayout(null);
 		tuDong.setBorder(BorderFactory.createTitledBorder("Auto"));
 		panelDuyetRong.add(tuDong);
 
-		batdau = new JButton(startIcon);
+		start = new JButton(startIcon);
 		
-		batdau.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
+		start.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
 
 		
 
-		batdau.addActionListener(new ActionListener() {
+		start.addActionListener(new ActionListener() {
 			// STARTBFS
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(!panelSoDoBFS.run){
-					/*if (wp.ds.FirstNode != null) {
-						panelSoDoBFS.makeKichBanBFS(wp.ds.FirstNode.cost + 1,
-								wp.data);
-						panelSoDoBFS.buoc = panelSoDoBFS.kBan.start;
-					}*/
 					if(wp.ds.FirstNode!=null){
 						if(panelSoDoBFS.buoc==null) {
 							
@@ -227,18 +184,18 @@ public class MainFrame extends JFrame implements ActionListener {
 							panelSoDoBFS.buoc=panelSoDoBFS.kBan.start;
 							
 						panelSoDoBFS.run = true;
-						batdau.setIcon(pauseIcon);
+						start.setIcon(pauseIcon);
 					}
 					
 				}else {
 					panelSoDoBFS.run=false;
-					batdau.setIcon(startIcon);
+					start.setIcon(startIcon);
 				}
 				
 			}
 
 		});
-		tuDong.add(batdau);
+		tuDong.add(start);
 		JButton tamDung = new JButton(stopIcon);
 		tamDung.setBounds(xStopBt, yStopBt, wStopBt, hStopBt);
 		tamDung.addActionListener(new ActionListener() {
@@ -248,7 +205,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				// TODO Auto-generated method stub
 				panelSoDoBFS.buoc=null;
 				panelSoDoBFS.run = false;
-				batdau.setIcon(startIcon);
+				start.setIcon(startIcon);
 				panelSoDoBFS.buoc=panelSoDoBFS.kBan.start;
 				panelSoDoBFS.setState();
 				panelSoDoBFS.render();
@@ -257,21 +214,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		});
 		tuDong.add(tamDung);
-		//JButton tiepTuc = new JButton("Continue");
-		/*tiepTuc.setBounds(200, 20, 90, 20);
-		tiepTuc.addActionListener(new ActionListener() {
-			// tiep tuc
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				panelSoDoBFS.run = true;
-				if (panelSoDoBFS.buoc == null)
-					panelSoDoBFS.buoc = panelSoDoBFS.kBan.start;
-			}
-
-		});*/
-		//tuDong.add(tiepTuc);
-
 		JLabel lbSpeed = new JLabel("Speed");
 		lbSpeed.setBounds(20, 50, 100, 20);
 		tuDong.add(lbSpeed);
@@ -348,10 +290,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		tuDong2.setBorder(BorderFactory.createTitledBorder("Auto"));
 		panelDuyetSau.add(tuDong2);
 
-		batdau2 = new JButton(startIcon);
-		batdau2.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
+		start2 = new JButton(startIcon);
+		start2.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
 
-		batdau2.addActionListener(new ActionListener() {
+		start2.addActionListener(new ActionListener() {
 			// STARTBFS
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -367,10 +309,10 @@ public class MainFrame extends JFrame implements ActionListener {
 							panelSoDoDFS.buoc=panelSoDoDFS.kBan.start;
 						}
 						panelSoDoDFS.run=true;
-						batdau2.setIcon(pauseIcon);
+						start2.setIcon(pauseIcon);
 					}else{
 						panelSoDoDFS.run = false;
-						batdau2.setIcon(startIcon);
+						start2.setIcon(startIcon);
 					}
 					
 					
@@ -379,7 +321,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 
 		});
-		tuDong2.add(batdau2);
+		tuDong2.add(start2);
 		JButton tamDung2 = new JButton(stopIcon);
 		tamDung2.setBounds(xStopBt, yStopBt, wStopBt, hStopBt);
 		tamDung2.addActionListener(new ActionListener() {
@@ -389,7 +331,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				// TODO Auto-generated method stub
 				panelSoDoDFS.buoc=null;
 				panelSoDoDFS.run = false;
-				batdau2.setIcon(startIcon);
+				start2.setIcon(startIcon);
 				panelSoDoDFS.buoc=panelSoDoDFS.kBan.start;
 				panelSoDoDFS.render();
 			}
@@ -464,7 +406,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		ketQuaDuyet.setBounds(60, 605, 300, 20);
 		panelDuyetSau.add(ketQuaDuyet);
 
-		// ************************DIJTRA****************************
+		// ************************DIJksTRA****************************
 
 		desc.add(panelDij, "dj");
 		panelDij.setBorder(BorderFactory
@@ -481,10 +423,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		tuDong3.setBorder(BorderFactory.createTitledBorder("Auto"));
 		panelDij.add(tuDong3);
 
-		batdau3 = new JButton(startIcon);
-		batdau3.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
+		start3 = new JButton(startIcon);
+		start3.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
 
-		batdau3.addActionListener(new ActionListener() {
+		start3.addActionListener(new ActionListener() {
 			// STARTBFS
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -504,17 +446,17 @@ public class MainFrame extends JFrame implements ActionListener {
 						
 						
 						panelDijstra.run=true;
-						batdau3.setIcon(pauseIcon);
+						start3.setIcon(pauseIcon);
 					}else{
 						panelDijstra.run=false;
-						batdau3.setIcon(startIcon);
+						start3.setIcon(startIcon);
 					}
 					
 				}
 			}
 
 		});
-		tuDong3.add(batdau3);
+		tuDong3.add(start3);
 		JButton tamDung3 = new JButton(stopIcon);
 		tamDung3.setBounds(xStopBt, yStopBt, wStopBt, hStopBt);
 		tamDung3.addActionListener(new ActionListener() {
@@ -526,7 +468,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				panelDijstra.buoc=null;
 				panelDijstra.tb.format();
 				panelDijstra.render();
-				batdau3.setIcon(startIcon);
+				start3.setIcon(startIcon);
 			}
 
 		});
@@ -640,15 +582,14 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		if (e.getSource() == New) {
 			
-			batdau.setIcon(startIcon);
-			batdau2.setIcon(startIcon);
-			batdau3.setIcon(startIcon);
+			start.setIcon(startIcon);
+			start2.setIcon(startIcon);
+			start3.setIcon(startIcon);
 			
 			if(result!=null) {
 				result.setVisible(false);
 				result = null;
 			}
-			
 			
 			
 			wp.ds = new Node_Link();
@@ -679,9 +620,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		if (e.getSource() == this.Edit) {
 			
-			batdau.setIcon(startIcon);
-			batdau2.setIcon(startIcon);
-			batdau3.setIcon(startIcon);
+			start.setIcon(startIcon);
+			start2.setIcon(startIcon);
+			start3.setIcon(startIcon);
 			
 			
 			if(result!=null) {
@@ -713,7 +654,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			
-			batdau.setIcon(startIcon);
+			start.setIcon(startIcon);
 			
 			
 			
@@ -760,8 +701,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
 			
-			
-			batdau2.setIcon(startIcon);
+			start2.setIcon(startIcon);
 
 			
 			if(result!=null) {
@@ -803,7 +743,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		if(e.getSource() == this.DIJStra){
 			
 		
-			batdau3.setIcon(startIcon);
+			start3.setIcon(startIcon);
 			
 			if(result!=null) {
 				result.setVisible(false);

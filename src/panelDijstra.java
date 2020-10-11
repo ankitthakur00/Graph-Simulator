@@ -138,7 +138,7 @@ public class panelDijstra extends JPanel implements ActionListener,
 						if (buoc.text == "buff2"){
 							tb.format();
 							run = false;
-							mf.batdau3.setIcon(mf.startIcon);
+							mf.start3.setIcon(mf.startIcon);
 						}
 						
 					

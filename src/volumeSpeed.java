@@ -31,8 +31,8 @@ public class volumeSpeed extends JPanel implements MouseListener,MouseMotionList
 	
 	private static final int w = 220;
 	private static final int h = 20;
-	private panelSoDoBFS soDo;
-	private panelSoDoDFS soDo2;
+	private panelBFS soDo;
+	private panelDFS soDo2;
 	private panelDijstra soDo3;
 	
 	private int levelPoint=14;
@@ -40,7 +40,7 @@ public class volumeSpeed extends JPanel implements MouseListener,MouseMotionList
 	private Image dbImage;
 	private Graphics dbg;
 	
-	public volumeSpeed(panelSoDoBFS soDo,panelSoDoDFS soDo2,panelDijstra soDo3,int i){
+	public volumeSpeed(panelBFS soDo,panelDFS soDo2,panelDijstra soDo3,int i){
 		this.setPreferredSize(new Dimension(w,h));
 		this.soDo=soDo;
 		this.addMouseListener(this);

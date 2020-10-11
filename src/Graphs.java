@@ -231,7 +231,6 @@ public class Graphs {
 			p = p.NodeNext;
 		}
 		
-		//***********VE NODE **************************
 		
 		
 		p = ds.FirstNode;
@@ -260,9 +259,6 @@ public class Graphs {
 			p = p.next;
 		}
 		
-		//***********VE NODE **************************
-		
-	
 		
 	}
 	
@@ -287,7 +283,6 @@ public class Graphs {
 			p = p.NodeNext;
 		}
 		
-		//***********VE NODE **************************
 		
 		
 		p = ds.FirstNode;
@@ -331,6 +326,3 @@ public class Graphs {
 		
 	}
 }
-
-
-//********************************************\

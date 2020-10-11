@@ -39,7 +39,7 @@ public class BackGround {
 	
 	public boolean enteredLine(Point xy1, Point xy2,Point mouse)        // DDA algorithm
 	{           
-	    int x_unit = 1, Dx = xy2.x - xy1.x, Dy = xy2.y - xy1.y; // Init first value
+	    int x_unit = 1, Dx = xy2.x - xy1.x, Dy = xy2.y - xy1.y; 
 	    int x = xy1.x;
 	    float y = xy1.y;
 	    float y_unit = 1;
@@ -49,7 +49,7 @@ public class BackGround {
 	    if (Dy < 0)
 	        y_unit = -1;
 	         
-	    if (xy1.x == xy2.x)   // duong thang dung
+	    if (xy1.x == xy2.x)   
 	    {
 	        while (y != xy2.y)
 	        {
@@ -59,7 +59,7 @@ public class BackGround {
 	            
 	        }   
 	    }
-	    else if (xy1.y == xy2.y)  // duong ngang
+	    else if (xy1.y == xy2.y)  
 	    {
 	        while (x != xy2.x)
 	        {
@@ -69,7 +69,7 @@ public class BackGround {
 	           
 	        }
 	    }
-	    else if (xy1.x != xy2.x && xy1.y != xy2.y)// duong xien
+	    else if (xy1.x != xy2.x && xy1.y != xy2.y)
 	    {
 	        float m = (float) Math.abs(Dy) / Math.abs(Dx);
 	        x_unit = 1;
@@ -78,9 +78,9 @@ public class BackGround {
 	        y = xy1.y;
 	         
 	        if (Dx < 0)          
-	            x_unit = -1;        // ve x giam
+	            x_unit = -1;       
 	        if (Dy < 0)
-	            y_unit = -m;        // ve y giam
+	            y_unit = -m;     
 	         
 	        if(mouse.x>=x-4&&mouse.x<=x+4&&mouse.y>=y-4&&mouse.y<=y+4)return true;
 	        
@@ -167,10 +167,10 @@ class PopMenuNode{
 		g.drawLine(x+2, y+30, x+98, y+30);
 		
 		g.setColor(Color.orange);
-		g.drawString("Ä�áº·t lÃ m gá»‘c", x+10, y+20);
+		g.drawString("", x+10, y+20);
 		
 		g.setColor(Color.red);
-		g.drawString("XÃ³a nÃºt", x+10, y+50);
+		g.drawString("", x+10, y+50);
 		
 	}
 	public boolean ischoose(int x,int y,Point startDrag){
