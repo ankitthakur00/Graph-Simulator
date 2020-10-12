@@ -1,11 +1,11 @@
 
 
-public class kichBanBFS {
+public class playBFS {
 	play start,end;
 	
 	Edge_List edgeL;
 	
-	public kichBanBFS(){
+	public playBFS(){
 		start=end=null;
 		
 	}

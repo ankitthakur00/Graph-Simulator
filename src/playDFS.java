@@ -1,13 +1,13 @@
 
 
-public class KichBanDFS {
+public class playDFS {
 	play2 start;
 
 	play2 end;
 
 	Edge_List edgeL;
 
-	public KichBanDFS() {
+	public playDFS() {
 		start = end = null;
 
 	}

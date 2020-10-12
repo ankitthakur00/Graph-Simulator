@@ -10,9 +10,9 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 	
 	private int w = 350;
 	private int h = 30;
-	private kichBanBFS a;
-	private KichBanDFS b;
-	private kichBanDJ c;
+	private playBFS a;
+	private playDFS b;
+	private playDJ c;
 	
 	private double doan;
 	
@@ -33,7 +33,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		this.mf=mf;
 		
 	}
-	public void setNumStep(kichBanBFS a){
+	public void setNumStep(playBFS a){
 		int step = 0;
 		this.a = a;
 		play buoc = a.start;
@@ -46,7 +46,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		doan = (double) w/nStep;
 		this.n = 1;
 	}
-	public void setNumStep(KichBanDFS b){
+	public void setNumStep(playDFS b){
 		int step = 0;
 		this.b = b;
 		play2 buoc = b.start;
@@ -75,7 +75,7 @@ public class ProsessingTime extends JPanel implements MouseListener, MouseMotion
 		}
 		return step-1;
 	}
-	public void setNumStep(kichBanDJ c){
+	public void setNumStep(playDJ c){
 		int step = 0;
 		this.c = c;
 		play3 buoc = c.start;

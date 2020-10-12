@@ -1,5 +1,5 @@
 
-public class kichBanDJ {
+public class playDJ {
 	play3 start;
 	play3 end;
 
@@ -10,12 +10,10 @@ public class kichBanDJ {
 		this.edgeL=edgeL;
 	}
 
-	public kichBanDJ() {
+	public playDJ() {
 		start = end = null;
 
 	}
-
-	
 
 	public void insertKichBan(String text, int r, int c, int edgeN,kqDuyet kq, int nkq) {
 		play3 a = new play3(text,r,c, edgeN,kq,nkq);

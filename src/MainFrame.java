@@ -92,9 +92,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	JCheckBox autoNumber, hideNumber;
 	
 	public MainFrame() {
-
-		
-		
 		super("Graph Algorithms simulator");
 		setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +101,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		JMenuBar mb = new JMenuBar();
 		this.setJMenuBar(mb);
 		New = new JButton("Create new");
-		
 		New.addActionListener(this);
 		Edit = new JButton("Edit");
 		Edit.addActionListener(this);
@@ -127,7 +123,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		JLabel lbMakeNode = new JLabel("Click left mouse to make a point");
 		lbMakeNode.setBounds(25,60,200,20);
 		credits.add(lbMakeNode);
-
 	}
 
 	public void come_card(int a, int maxcard) {
@@ -144,7 +139,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private void makeDescr() {
 		int WIDTH = 465, HEIGHT = 647;
-
 		Container c = getContentPane();
 		desc.setBounds(510, 3, WIDTH, HEIGHT);
 		desc.setLayout(card);
@@ -152,16 +146,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		credits.setBorder(BorderFactory.createTitledBorder("Edit graph"));
 		credits.setLayout(null);
 		credits.add(qc);
-		panelDuyetRong.setBorder(BorderFactory
-				.createTitledBorder("BFS"));
+		panelDuyetRong.setBorder(BorderFactory.createTitledBorder("BFS"));
 		JPanel automatic = new JPanel();
 		automatic.setBounds(5, 520, 300, 80);
 		automatic.setLayout(null);
 		automatic.setBorder(BorderFactory.createTitledBorder("Auto"));
 		panelDuyetRong.add(automatic);
-
 		start = new JButton(startIcon);
-		
 		start.setBounds(xStartBt, yStartBt, wStartBt, hStartBt);
 
 	//start bfs
@@ -237,8 +228,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
 				panelSoDoBFS.actionPerformd2();
 			}
 
@@ -329,21 +318,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		});
 		tuDong2.add(tamDung2);
-		/*JButton tiepTuc2 = new JButton("Continue");
-		tiepTuc2.setBounds(200, 20, 90, 20);
-		tiepTuc2.addActionListener(new ActionListener() {
-			// tiep tuc
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				panelSoDoDFS.run = true;
-				if (panelSoDoDFS.buoc == null)
-					panelSoDoDFS.buoc = panelSoDoDFS.kBan.start;
-			}
-
-		});
-		tuDong2.add(tiepTuc2);*/
-
+	
 		JLabel lbSpeed2 = new JLabel("Speed");
 		lbSpeed2.setBounds(20, 50, 100, 20);
 		tuDong2.add(lbSpeed2);
@@ -603,7 +578,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
-			panelDijstra.kBan = new kichBanDJ();
+			panelDijstra.kBan = new playDJ();
 			card.show(desc, "edit");
 			
 			
@@ -627,7 +602,6 @@ public class MainFrame extends JFrame implements ActionListener {
 			wp.DFS = false;
 			wp.DJ = false;
 			wp.repaint();
-			// come_card(1,4);
 			panelDijstra.timer.stop();
 			panelDijstra.setRun(false);
 			panelSoDoBFS.timer.stop();
@@ -636,7 +610,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			panelSoDoBFS.steps = null;
 			panelSoDoDFS.buoc = null;
 			panelDijstra.buoc = null;
-			panelDijstra.kBan = new kichBanDJ();
+			panelDijstra.kBan = new playDJ();
 			qc.setRun(true);
 		}
 		if (e.getSource() == this.BFS) {
@@ -724,8 +698,6 @@ public class MainFrame extends JFrame implements ActionListener {
 					result.prosessingTime.setNumStep(panelSoDoDFS.kBan);
 				}
 					
-				// panelSoDoDFS.makeKichBanDFS(wp.ds.FirstNode.cost + 1,
-				// wp.data);
 				panelSoDoDFS.timer.start();
 				wp.edit = false;
 				wp.repaint();
@@ -753,8 +725,6 @@ public class MainFrame extends JFrame implements ActionListener {
 				panelDijstra.tb.format();
 
 				if (wp.ds.FirstNode != null){
-					//panelDijstra.Dijkstra(wp.matNum.getA(), wp.matNum.getSize(), 1, 5);
-					//panelDijstra.dijkstra.dijkstraResult(wp.matNum.getA(), wp.data+1, 1, 5);
 				}
 				
 				panelSoDoBFS.timer.stop();

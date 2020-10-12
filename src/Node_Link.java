@@ -1,12 +1,5 @@
 
-
 import java.awt.Point;
-
-
-
-
-
-
 public class Node_Link {
 	Node p, q, loc;
 	int min;

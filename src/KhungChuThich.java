@@ -50,20 +50,20 @@ public class KhungChuThich {
 		g2.setFont(new Font("Courier New", Font.ITALIC, 12));
 		
 		
-		int dongHienTai = 1;
+		int curr = 1;
 		while(p!=null){
 			if(i%2!=0){
 				g2.setColor(p.color);
-				g2.fillOval(x, y+20*dongHienTai, 15, 15);
+				g2.fillOval(x, y+20*curr, 15, 15);
 				g2.setColor(Color.black);
-				g2.drawString(p.str, x+17, y+13+20*dongHienTai);
+				g2.drawString(p.str, x+17, y+13+20*curr);
 			}else{
 				g2.setColor(p.color);
-				g2.fillOval(x+190, y+20*dongHienTai, 15, 15);
+				g2.fillOval(x+190, y+20*curr, 15, 15);
 				g2.setColor(Color.black);
-				g2.drawString(p.str, x+207, y+13+20*dongHienTai);
+				g2.drawString(p.str, x+207, y+13+20*curr);
 				
-				dongHienTai++;
+				curr++;
 			}
 			i++;
 			p=p.next;

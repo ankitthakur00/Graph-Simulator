@@ -20,7 +20,7 @@ public class panelBFS extends JPanel implements ActionListener {
 	private int speed = 1000;
 
 	private int[][] a = new int[31][31];
-	public kichBanBFS kBan;
+	public playBFS kBan;
 
 	Timer timer;
 	long beforeTime = 0L;
@@ -46,7 +46,7 @@ public class panelBFS extends JPanel implements ActionListener {
 
 		timer = new Timer(100, this);
 		sodo = new SoDo();
-		kBan = new kichBanBFS();
+		kBan = new playBFS();
 		this.mf = mf;
 		
 		

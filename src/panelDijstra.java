@@ -24,7 +24,7 @@ public class panelDijstra extends JPanel implements ActionListener,
 	Graphics2D dbg2;
 	Image dbImage;
 
-	kichBanDJ kBan;
+	playDJ kBan;
 	play3 buoc;
 	TapDinh tapDinh;
 	private int[][] a = new int[31][31];
@@ -45,7 +45,7 @@ public class panelDijstra extends JPanel implements ActionListener,
 		this.mf=mf;
 
 		this.addMouseMotionListener(this);
-		kBan = new kichBanDJ();
+		kBan = new playDJ();
 		
 		tapDinh=new TapDinh();
 	}

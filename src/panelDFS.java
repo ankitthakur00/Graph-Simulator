@@ -24,7 +24,7 @@ public class panelDFS extends JPanel implements ActionListener{
 
 
 	boolean run = false;
-	public KichBanDFS kBan;
+	public playDFS kBan;
 	play2 buoc;
 
 	Timer timer;
@@ -51,7 +51,7 @@ public class panelDFS extends JPanel implements ActionListener{
 
 		timer = new Timer(100, this);
 		
-		kBan=new KichBanDFS();
+		kBan=new playDFS();
 		
 		sodo=new SoDoDFS();
 		
